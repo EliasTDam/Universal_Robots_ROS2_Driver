@@ -280,12 +280,12 @@ def launch_setup(context, *args, **kwargs):
         ],
     )
 
-    robot_state_publisher_node = Node(
-        package="robot_state_publisher",
-        executable="robot_state_publisher",
-        output="both",
-        parameters=[robot_description],
-    )
+    #robot_state_publisher_node = Node(
+    #    package="robot_state_publisher",
+    #    executable="robot_state_publisher",
+    #    output="both",
+    #    parameters=[robot_description],
+    #)
 
     rviz_node = Node(
         package="rviz2",
@@ -358,7 +358,7 @@ def launch_setup(context, *args, **kwargs):
         tool_communication_node,
         controller_stopper_node,
         urscript_interface,
-        robot_state_publisher_node,
+        #robot_state_publisher_node,
         rviz_node,
         initial_joint_controller_spawner_stopped,
         initial_joint_controller_spawner_started,
