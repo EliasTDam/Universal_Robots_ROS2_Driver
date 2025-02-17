@@ -46,17 +46,17 @@ def generate_launch_description():
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "use_mock_hardware",
+            "use_fake_hardware",
             default_value="false",
-            description="Start robot with mock hardware mirroring command to its states.",
+            description="Start robot with fake hardware mirroring command to its states.",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
-            "mock_sensor_commands",
+            "fake_sensor_commands",
             default_value="false",
-            description="Enable mock command interfaces for sensors used for simple simulations. \
-            Used only if 'use_mock_hardware' parameter is true.",
+            description="Enable fake command interfaces for sensors used for simple simulations. "
+            "Used only if 'use_fake_hardware' parameter is true.",
         )
     )
     declared_arguments.append(
@@ -69,6 +69,8 @@ def generate_launch_description():
                 "joint_trajectory_controller",
                 "forward_velocity_controller",
                 "forward_position_controller",
+                "freedrive_mode_controller",
+                "passthrough_trajectory_controller",
             ],
         )
     )
@@ -82,8 +84,8 @@ def generate_launch_description():
 
     # Initialize Arguments
     robot_ip = LaunchConfiguration("robot_ip")
-    use_mock_hardware = LaunchConfiguration("use_mock_hardware")
-    mock_sensor_commands = LaunchConfiguration("mock_sensor_commands")
+    use_fake_hardware = LaunchConfiguration("use_fake_hardware")
+    fake_sensor_commands = LaunchConfiguration("fake_sensor_commands")
     initial_joint_controller = LaunchConfiguration("initial_joint_controller")
     activate_joint_controller = LaunchConfiguration("activate_joint_controller")
 
@@ -92,8 +94,8 @@ def generate_launch_description():
         launch_arguments={
             "ur_type": "ur20",
             "robot_ip": robot_ip,
-            "use_mock_hardware": use_mock_hardware,
-            "mock_sensor_commands": mock_sensor_commands,
+            "use_fake_hardware": use_fake_hardware,
+            "fake_sensor_commands": fake_sensor_commands,
             "initial_joint_controller": initial_joint_controller,
             "activate_joint_controller": activate_joint_controller,
         }.items(),
